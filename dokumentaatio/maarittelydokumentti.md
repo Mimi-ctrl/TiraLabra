@@ -18,7 +18,3 @@ Algoritmit ja tietorakenteet: MiniMax algoritmi Alfa-Beta-karsinnalla. MiniMaxia
 
 Aika ja tila vaativuus: Minimax-algoritmin aikavaativuus on O(b^d), missä "b" on puun haarojen määrä solmussa ja "d" on puun syvyys eli käsiteltävien pelitilanteiden maksimimäärä. Aikavaativuus kasvaa eksponentiaalisesti syvyyden suhteen.
 
-Lähteitä:
-- https://tiralabra.github.io/2023_loppukesa/
-- https://en.wikipedia.org/wiki/Minimax
-- https://www.cs.helsinki.fi/u/ahslaaks/tirakirja/
