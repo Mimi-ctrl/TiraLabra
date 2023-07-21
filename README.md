@@ -1,6 +1,6 @@
 # :yellow_circle: Connect Four :red_circle:
 
-Tekstiä
+Connect Four peli pythonilla toteutettuna. Helsingin yliopiston Tietorakenteet ja algoritmit kurssin projekti.
 
 ## Dokumentaatio
 ### [Käyttöohje](https://github.com/Mimi-ctrl/TiraLabra/blob/main/dokumentaatio/kayttoohje.md)
