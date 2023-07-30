@@ -1,5 +1,8 @@
 # :yellow_circle: Connect Four :red_circle:
 
+![GHA workflow badge](https://github.com/Mimi-ctrl/TiraLabra/workflows/CI/badge.svg)
+[![codecov](https://codecov.io/gh/Mimi-ctrl/TiraLabra/branch/main/graph/badge.svg?token=OO3HO2Y8BR)](https://codecov.io/gh/Mimi-ctrl/TiraLabra)
+
 Connect Four peli pythonilla. Helsingin yliopiston Tietorakenteet ja algoritmit kurssin projekti.
 
 ## Dokumentaatio
