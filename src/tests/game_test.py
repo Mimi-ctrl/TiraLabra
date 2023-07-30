@@ -1,12 +1,13 @@
 import unittest
 from game import Game
 
+ROWS = 6
+COLUMN = 7
+
 class TestGame(unittest.TestCase):
     def setUp(self):
         self.game = Game()
-    
-    def test_create_board(self):
-        self.game.create_board()
+        self.board = Game.create_board()
 
 
         
