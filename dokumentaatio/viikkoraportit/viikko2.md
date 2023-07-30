@@ -8,7 +8,7 @@
 Ohjelma luo pelilaudan, kysyy käyttäjältä syötteitä ja lisää pelinappuloita laudalle. Ohjelma tarkistaa syötteen ja ilmoittaa jos se on vääränlainen. En saanut kovinkaan paljoa tällä viikolla tehtyä ohjelmaa, mutta pyrin tekemään ensiviikolla enemmän jotta saisin pelin valmistumaan mahdollisimman nopeasti. 
 
 ## Mitä opin?
--
+Ei mitään uutta.
 
 ## Epäselvyyksiä?
 Ei ole.
