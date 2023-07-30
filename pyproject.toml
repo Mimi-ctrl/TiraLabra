@@ -6,8 +6,9 @@ authors = ["Laura Peltonen <laura.peltonen53@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = ">=3.9,<4.0"
 invoke = "^2.2.0"
+numpy = "^1.25.1"
 
 
 [tool.poetry.group.dev.dependencies]
