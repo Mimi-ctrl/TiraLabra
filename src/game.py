@@ -31,7 +31,7 @@ class Game:
                 return 2
             else:
                 print("\nInvalid input!")
-                continue
+                continue   
 
     def game_loop():
         """Print game board and ask column.
@@ -39,14 +39,18 @@ class Game:
         board = Game.create_board()
         player = 1
         print("\nChoose column 0-6, Player 1 start.\n")
-        for i in range(1, 20):
-            print(board)
+        print(board)
+        while True:
             column = int(input("Choose column: "))
             Game.drop_piece(board, column, player)
-            if player == 1:
-                player = 2
+            print(board)
+            if Game.check_win(board):
+                break
             else:
-                player = 1
+                if player == 1:
+                    player = 2
+                else:
+                    player = 1
 
     def create_board():
         """Create 6x7 game board filled with 0.
@@ -76,3 +80,31 @@ class Game:
         else:
             print("Column full or invalid column. Please try another column.")
             return False
+
+    def check_win(board):
+        """Check horizontal, vertical, positive diagonal and negative diagonal if 4.
+        """
+        for x in board:
+            for y in range(len(x)-3):
+                if x[y] == 1 or x[y] == 2:
+                    if x[y] == x[y+1] == x[y+2] == x[y+3]:
+                        print("Player ", str(x[y])[0],"wins!")
+                        return True                 
+        for x in range(len(board)-3):
+            for y in range(len(board[x])):
+                if board[x][y] == 1 or board[x][y] == 2:
+                    if board[x][y] == board[x+1][y] == board[x+2][y] == board[x+3][y]:
+                        print("Player ", str(board[x][y])[0],"wins!")
+                        return True
+        for x in range(0,len(board)-3):
+            for y in range(0,len(board[x])-3):
+                if board[x][y] == 1 or board[x][y] == 2:
+                    if board[x][y] == board[x+1][y+1] == board[x+2][y+2] == board[x+3][y+3]:
+                        print("Player ", str(board[x][y])[0],"wins!")
+                        return True
+        for x in range(len(board)-3):  
+            for y in range(3, len(board[x])):
+                if board[x][y] == 1 or board[x][y] == 2:
+                    if board[x][y] == board[x+1][y-1] == board[x+2][y-2] == board[x+3][y-3]:
+                        print("Player ", str(board[x][y])[0],"wins!")
+                        return True
