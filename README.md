@@ -1,4 +1,4 @@
-# :yellow_circle: Connect Four :red_circle:
+# Connect Four
 
 ![GHA workflow badge](https://github.com/Mimi-ctrl/TiraLabra/workflows/CI/badge.svg)
 [![codecov](https://codecov.io/gh/Mimi-ctrl/TiraLabra/branch/main/graph/badge.svg?token=OO3HO2Y8BR)](https://codecov.io/gh/Mimi-ctrl/TiraLabra)
