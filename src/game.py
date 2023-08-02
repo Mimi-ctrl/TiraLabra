@@ -9,8 +9,7 @@ class Game:
 
     @staticmethod
     def print_menu():
-        """ Print menu where user can choose new game or exit.
-        """
+        """Print menu where user can choose new game or exit."""
         print("🄲 🄾 🄽 🄽 🄴 🄲 🅃  🄵 🄾 🅄 🅁")
         print(
             "\n--------------------------\n1: New Game\n2: Exit\n--------------------------")
@@ -26,8 +25,7 @@ class Game:
 
     @staticmethod
     def game_mode():
-        """Print menu where user can choose which mode.
-        """
+        """Print menu where user can choose which mode."""
         print("\n--------------------------\n1: Computer\n2: Player 2\n--------------------------")
         while True:
             answer = int(input("\n--> "))
@@ -39,8 +37,8 @@ class Game:
             continue
 
     def game_loop(self):
-        """Print game board and ask column.
-        """
+        """Print game board and ask column. Call drop piece for adding piece to
+        board. Call check win for checking if there any win. Change player if no win."""
         player = 1
         print("\nChoose column 0-6, Player 1 start.\n")
         print(self.board)
@@ -56,8 +54,7 @@ class Game:
                 player = 1
 
     def is_valid_column(self, column):
-        """Check if given column valid.
-        """
+        """Check if given column valid."""
         if 0 <= column <= 6:
             if int(self.board[0][column]) == 0:
                 return True
@@ -66,8 +63,7 @@ class Game:
         return None
 
     def drop_piece(self, column, player):
-        """Drop piece to column if valid.  
-        """
+        """Drop piece to column if valid. Call is valid column to make sure is valid."""
         if self.game().is_valid_column(column):
             for row in range(len(self.board)-1, -1, -1):
                 if self.board[row][column] == 0:
@@ -80,7 +76,7 @@ class Game:
 
     def check_win(self):
         """Check horizontal, vertical, positive diagonal and negative diagonal if 4.
-        """
+        Return true if win."""
         for row in self.board:
             for column in range(len(row)-3):
                 if row[column] == 1 or row[column] == 2:
