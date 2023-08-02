@@ -1,13 +1,14 @@
-from ai import Ai
+#from ai import Ai
 from game import Game
 
 
 def main():
-    selection = Game.print_menu()
-    if selection == True:
-        mode = Game.game_mode()
+    game = Game()
+    selection = game.print_menu()
+    if selection:
+        mode = game.game_mode()
         if mode == 2:
-            Game.game_loop()
+            game.game_loop()
         # if mode == 1:
 
 
