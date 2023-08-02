@@ -3,9 +3,8 @@ import numpy
 
 class Game:
 
-    def __init__(self, board=numpy.zeros((6, 7))):
-        self.board = board
-        self.game = Game
+    def __init__(self):
+        self.board = numpy.zeros((6, 7))
 
     @staticmethod
     def print_menu():
@@ -44,9 +43,9 @@ class Game:
         print(self.board)
         while True:
             column = int(input("Choose column: "))
-            self.game().drop_piece(column, player)
+            self.drop_piece(column, player)
             print(self.board)
-            if self.game().check_win():
+            if self.check_win():
                 break
             if player == 1:
                 player = 2
@@ -64,7 +63,7 @@ class Game:
 
     def drop_piece(self, column, player):
         """Drop piece to column if valid. Call is valid column to make sure is valid."""
-        if self.game().is_valid_column(column):
+        if self.is_valid_column(column):
             for row in range(len(self.board)-1, -1, -1):
                 if self.board[row][column] == 0:
                     self.board[row][column] = player
