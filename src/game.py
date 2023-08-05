@@ -49,15 +49,20 @@ class Game:
         print("\nChoose column 0-6, Player 1 start.\n")
         print(self.board)
         while True:
-            column = int(input("Choose column: "))
-            self.drop_piece(column, player)
-            print(self.board)
-            if self.check_win():
-                break
-            if player == 1:
-                player = 2
+            column = input("Choose column: ")
+            if column.isnumeric():
+                column = int(column)
+                self.drop_piece(column, player)
+                print(self.board)
+                if self.check_win():
+                    break
+                if player == 1:
+                    player = 2
+                else:
+                    player = 1
             else:
-                player = 1
+                print("Invalid column.")
+                continue
 
     def is_valid_column(self, column):
         """Check if given column valid."""

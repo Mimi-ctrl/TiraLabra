@@ -6,6 +6,7 @@
 |  1.8.23  | 2 |  Siivosin ja parantelin koodia.  |
 |   2.8.23  | 2 | Aloitin testien tekemisen ja parantelin koodia.  |
 |   3.8.23  | 1 | Tein testausdokumenttia ja käyttöohjetta   |
+|   4.8.23  |   1   |   Parantelin koodia   |
 
 ## Mitä uutta?
 Ohjelma tomii nyt kaksin pelattavana ja testaa luokkaa Game.
