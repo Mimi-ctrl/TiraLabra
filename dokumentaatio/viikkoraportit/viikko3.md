@@ -8,7 +8,7 @@
 |   3.8.23  | 1 | Tein testausdokumenttia ja käyttöohjetta   |
 |   4.8.23  |   1   |   Parantelin koodia   |
 |   6.8.23  |   3   |   Aloitin ai:n tekemistä sekä viimeistelin käyttöohje dokumentaation.   |
-| Yhteensä   |  11           |            tuntia                          |
+| Yhteensä   |  11           |            Tuntia                          |
 
 ## Mitä uutta?
 Ohjelma tomii nyt kaksin pelattavana ja testaa luokkaa Game. Koodi on selkeämpää. Aloitin ai:n tekemisen, mutta en saanut sitä vielä toimimaan. Ai:ta pitää siis vielä korjailla.
