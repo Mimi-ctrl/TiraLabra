@@ -41,6 +41,7 @@ class TestGame(unittest.TestCase):
                           [2, 1, 2, 1, 2, 1, 2]])
         self.assertFalse(self.game.drop_piece(board, 0, 1))
         self.assertFalse(self.game.drop_piece(board, 10, 1))
+        self.assertFalse(self.game.drop_piece(board, -4, 1))
 
     def test_check_is_board_full_full(self):
         board = np.array([[1, 2, 1, 2, 1, 2, 1],
@@ -52,50 +53,68 @@ class TestGame(unittest.TestCase):
         self.assertTrue(self.game.check_is_board_full(board))
 
     def test_check_is_board_full_not_full(self):
-        board = np.array([[0, 0, 0, 0, 0, 0, 0],
-                          [0, 0, 0, 0, 0, 0, 0],
-                          [0, 0, 0, 0, 0, 0, 0],
-                          [0, 0, 0, 0, 0, 0, 0],
-                          [0, 0, 0, 0, 0, 0, 0],
-                          [1, 0, 0, 0, 0, 0, 0]])
-        self.assertFalse(self.game.check_is_board_full(board))
-
-    def test_horizontal_win(self):
-        board = np.array([[0, 0, 0, 0, 0, 0, 0],
-                          [0, 0, 0, 0, 0, 0, 0],
-                          [0, 0, 0, 0, 0, 0, 0],
-                          [0, 0, 0, 0, 0, 0, 0],
-                          [0, 0, 0, 0, 0, 0, 0],
-                          [1, 1, 1, 1, 0, 0, 0]])
-        self.game.board = board
-        self.assertTrue(self.game.check_win(self.game.board))
+        self.game.drop_piece(self.game.board, 0, 1)
+        self.game.drop_piece(self.game.board, 0, 1)
+        self.game.drop_piece(self.game.board, 0, 1)
+        self.assertFalse(self.game.check_is_board_full(self.game.board))
 
     def test_vertical_win(self):
-        board = np.array([[0, 0, 0, 0, 0, 0, 0],
-                          [0, 0, 0, 0, 0, 0, 0],
-                          [1, 0, 0, 0, 0, 0, 0],
-                          [1, 0, 0, 0, 0, 0, 0],
-                          [1, 0, 0, 0, 0, 0, 0],
-                          [1, 0, 0, 0, 0, 0, 0]])
-        self.game.board = board
-        self.assertTrue(self.game.check_win(self.game.board))
+        self.game.drop_piece(self.game.board, 0, 1)
+        self.game.drop_piece(self.game.board, 0, 1)
+        self.game.drop_piece(self.game.board, 0, 1)
+        self.game.drop_piece(self.game.board, 0, 1)
+        self.assertEqual(self.game.check_win(self.game.board), True)
+
+    def test_vertical_win_2(self):
+        self.game.drop_piece(self.game.board, 1, 1)
+        self.game.drop_piece(self.game.board, 1, 1)
+        self.game.drop_piece(self.game.board, 1, 1)
+        self.game.drop_piece(self.game.board, 1, 1)
+        self.assertEqual(self.game.check_win(self.game.board), True)
+
+    def test_horizontal_win(self):
+        self.game.drop_piece(self.game.board, 0, 1)
+        self.game.drop_piece(self.game.board, 1, 1)
+        self.game.drop_piece(self.game.board, 2, 1)
+        self.game.drop_piece(self.game.board, 3, 1)
+        self.assertEqual(self.game.check_win(self.game.board), True)
 
     def test_positive_diagonal_win(self):
-        board = np.array([[0, 0, 0, 0, 0, 0, 0],
-                          [0, 0, 0, 0, 0, 0, 0],
-                          [0, 0, 0, 0, 0, 0, 1],
-                          [0, 0, 0, 0, 0, 1, 0],
-                          [0, 0, 0, 0, 1, 0, 0],
-                          [0, 0, 0, 1, 0, 0, 0]])
-        self.game.board = board
-        self.assertTrue(self.game.check_win(self.game.board))
+        self.game.drop_piece(self.game.board, 0, 1)
+        self.game.drop_piece(self.game.board, 1, 1)
+        self.game.drop_piece(self.game.board, 1, 1)
+        self.game.drop_piece(self.game.board, 2, 1)
+        self.game.drop_piece(self.game.board, 2, 1)
+        self.game.drop_piece(self.game.board, 2, 1)
+        self.game.drop_piece(self.game.board, 3, 1)
+        self.game.drop_piece(self.game.board, 3, 1)
+        self.game.drop_piece(self.game.board, 3, 1)
+        self.game.drop_piece(self.game.board, 3, 1)
+        self.assertEqual(self.game.check_win(self.game.board), True)
 
     def test_negative_diagonal_win(self):
-        board = np.array([[0, 0, 0, 0, 0, 0, 0],
-                          [0, 0, 0, 0, 0, 0, 0],
-                          [0, 0, 1, 0, 0, 0, 0],
-                          [0, 0, 0, 1, 0, 0, 0],
-                          [0, 0, 0, 0, 1, 0, 0],
-                          [0, 0, 0, 0, 0, 1, 0]])
-        self.game.board = board
-        self.assertTrue(self.game.check_win(self.game.board))
+        self.game.drop_piece(self.game.board, 0, 1)
+        self.game.drop_piece(self.game.board, 0, 1)
+        self.game.drop_piece(self.game.board, 0, 1)
+        self.game.drop_piece(self.game.board, 0, 1)
+        self.game.drop_piece(self.game.board, 1, 1)
+        self.game.drop_piece(self.game.board, 1, 1)
+        self.game.drop_piece(self.game.board, 1, 1)
+        self.game.drop_piece(self.game.board, 2, 1)
+        self.game.drop_piece(self.game.board, 2, 1)
+        self.game.drop_piece(self.game.board, 3, 1)
+        self.assertEqual(self.game.check_win(self.game.board), True)
+
+    def test_not_win_0(self):
+        self.game.drop_piece(self.game.board, 6, 1)
+        self.game.drop_piece(self.game.board, 6, 1)
+        self.assertEqual(self.game.check_win(self.game.board), None)
+
+    def test_not_win_1(self):
+        self.game.drop_piece(self.game.board, 0, 3)
+        self.game.drop_piece(self.game.board, 0, 4)
+        self.assertEqual(self.game.check_win(self.game.board), None)
+
+    def test_not_win_2(self):
+        board = np.array([[]])
+        self.assertEqual(self.game.check_win(board), None)
