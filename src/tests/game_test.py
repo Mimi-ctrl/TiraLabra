@@ -1,4 +1,6 @@
+from io import StringIO
 import unittest
+from unittest.mock import patch
 import numpy as np
 from game import Game
 
@@ -92,6 +94,11 @@ class TestGame(unittest.TestCase):
         self.game.drop_piece(self.game.board, 3, 1)
         self.assertEqual(self.game.check_win(self.game.board), True)
 
+    def test_drop_piece_invalid_column(self):
+        board = np.zeros((6, 7))
+        result = self.game.drop_piece(board, 10, 1)
+        self.assertEqual(result, False)
+
     def test_negative_diagonal_win(self):
         self.game.drop_piece(self.game.board, 0, 1)
         self.game.drop_piece(self.game.board, 0, 1)
@@ -118,3 +125,41 @@ class TestGame(unittest.TestCase):
     def test_not_win_2(self):
         board = np.array([[]])
         self.assertEqual(self.game.check_win(board), None)
+
+    @patch('builtins.input', side_effect=['0', '1', '2', '3', '4', '5', '6'])
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_game_loop_draw(self, mock_stdout, mock_input):
+        self.game.board = np.ones((6, 7))
+        self.game.game_loop()
+        output = mock_stdout.getvalue().strip()
+        self.assertIn("Draw match", output)
+
+    def test_drop_piece_valid_column(self):
+        board = np.zeros((6, 7))
+        self.assertTrue(self.game.drop_piece(board, 0, 1))
+        self.assertEqual(board[5][0], 1)
+
+    def test_check_win_positive_diagonal_1(self):
+        board = np.zeros((6, 7))
+        board[2][2] = 1
+        board[3][3] = 1
+        board[4][4] = 1
+        board[5][5] = 1
+        self.assertTrue(self.game.check_win(board))
+
+    def test_check_win_negative_diagonal_1(self):
+        board = np.zeros((6, 7))
+        board[2][5] = 1
+        board[3][4] = 1
+        board[4][3] = 1
+        board[5][2] = 1
+        self.assertTrue(self.game.check_win(board))
+
+    @patch('builtins.input', side_effect=['0', '1', '0', '1', '0', '1', '0', '1', '0', '1'])
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_game_loop_valid_input(self, mock_stdout, mock_input):
+        self.game.game_loop()
+        output = mock_stdout.getvalue().strip()
+        print("Final Output:\n", output)
+        self.assertNotIn("Invalid column.", output)
+        self.assertIn("Player  1 wins!", output)
