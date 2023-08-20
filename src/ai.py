@@ -9,7 +9,9 @@ class Ai:
         self.game = Game()
 
     def game_loop(self):
-        """????"""
+        """Print game board and ask column for player 1. Call drop piece for adding piece to
+        board. Call check win for checking if there any win. Change player if no win. 
+        When it's player 2's turn, it call find best move to find best move for AI."""
         print("\nChoose column 0-6, Player 1 start.\n")
         print(self.board)
         while True:
@@ -34,64 +36,57 @@ class Ai:
                 break
 
     def find_best_move(self, board):
-        """???"""
+        """Find the best move for the AI to make, considering the current state of the board."""
         best_move = -1
         best_score = float('-inf')
         for col in range(7):
-            if self.is_valid_move(board, col):
-                temp_board = board.copy()
-                self.make_move(temp_board, col, 2)
-                score = self.minimax(temp_board, 4, float(
-                    '-inf'), float('inf'), False)
-                if score > best_score:
-                    best_score = score
-                    best_move = col
+            temp_board = board.copy()
+            self.make_move(temp_board, col, 2)
+            score = self.minimax(temp_board, 4, float(
+                '-inf'), float('inf'), False)
+            if score > best_score:
+                best_score = score
+                best_move = col
         return best_move
 
-    def is_valid_move(self, board, col):
-        """????"""
-        return board[6 - 1][col] == 0
-
     def make_move(self, board, col, player):
-        """???"""
+        """Make a move on the game board for the specified player by placing their piece in the chosen column."""
         for row in range(6):
             if board[row][col] == 0:
                 board[row][col] = player
                 break
 
     def minimax(self, board, depth, alpha, beta, ai_turn):
-        """???"""
+        """Perform the minimax algorithm to evaluate and determine the best move for the AI."""
         if (depth == 0 or self.game.check_is_board_full(board)
                 or self.is_winning_move(board, 1) or self.is_winning_move(board, 2)):
             return self.evaluate_position(board, 2) - self.evaluate_position(board, 1)
         if ai_turn:
             max_eval = float('-inf')
             for col in range(7):
-                if self.is_valid_move(board, col):
-                    temp_board = board.copy()
-                    self.make_move(temp_board, col, 2)
-                    evaluation = self.minimax(
-                        temp_board, depth - 1, alpha, beta, False)
-                    max_eval = max(max_eval, evaluation)
-                    alpha = max(alpha, evaluation)
-                    if beta <= alpha:
-                        break
+                temp_board = board.copy()
+                self.make_move(temp_board, col, 2)
+                evaluation = self.minimax(
+                    temp_board, depth - 1, alpha, beta, False)
+                max_eval = max(max_eval, evaluation)
+                alpha = max(alpha, evaluation)
+                if beta <= alpha:
+                    break
             return max_eval
         min_eval = float('inf')
         for col in range(7):
-            if self.is_valid_move(board, col):
-                temp_board = board.copy()
-                self.make_move(temp_board, col, 1)
-                evaluation = self.minimax(
-                    temp_board, depth - 1, alpha, beta, True)
-                min_eval = min(min_eval, evaluation)
-                beta = min(beta, evaluation)
-                if beta <= alpha:
-                    break
+            temp_board = board.copy()
+            self.make_move(temp_board, col, 1)
+            evaluation = self.minimax(
+                temp_board, depth - 1, alpha, beta, True)
+            min_eval = min(min_eval, evaluation)
+            beta = min(beta, evaluation)
+            if beta <= alpha:
+                break
         return min_eval
 
     def is_winning_move(self, board, player):
-        """???"""
+        """Check if the player has a winning move on the current game board."""
         for row in range(6):
             for col in range(7 - 3):
                 if all(board[row][col+i] == player for i in range(4)):
@@ -109,7 +104,7 @@ class Ai:
         return False
 
     def evaluate_position(self, board, player):
-        """???"""
+        """Evaluate the current position on the game board for the specified player."""
         score = 0
         for row in range(6):
             for col in range(7 - 3):
@@ -128,7 +123,7 @@ class Ai:
         return score
 
     def evaluate_line(self, line, player):
-        """???"""
+        """Evaluate a line of game pieces for its strategic importance to the specified player."""
         score = 0
         opponent_player = 1 if player == 2 else 2
         if line.count(player) == 4:

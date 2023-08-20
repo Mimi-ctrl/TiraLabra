@@ -54,7 +54,7 @@ class Game:
         return None
 
     def check_is_board_full(self, board):
-        """Check board is it full. If board is full return True"""
+        """Check board is it full. If board is full return True."""
         for row in board:
             for cell in row:
                 if cell == 0:
