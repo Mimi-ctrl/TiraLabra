@@ -1,4 +1,5 @@
 import unittest
+from unittest.mock import patch, call
 import numpy as np
 from game import Game
 from ai import Ai
@@ -18,7 +19,7 @@ class TestAi(unittest.TestCase):
         self.ai.make_move(board, 2, 1)
         self.assertEqual(board[5][2], 1)
 
-    def test_is_winning_move(self):
+    def test_is_winning_move_horizontal(self):
         board = np.array([
             [0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0],
@@ -26,6 +27,42 @@ class TestAi(unittest.TestCase):
             [0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0]
+        ])
+        self.assertTrue(self.ai.is_winning_move(board, 1))
+        self.assertFalse(self.ai.is_winning_move(board, 2))
+
+    def test_is_winning_move_vertical(self):
+        board = np.array([
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 1, 0, 0, 0, 0],
+            [0, 0, 1, 0, 0, 0, 0],
+            [0, 0, 1, 0, 0, 0, 0],
+            [0, 0, 1, 0, 0, 0, 0]
+        ])
+        self.assertTrue(self.ai.is_winning_move(board, 1))
+        self.assertFalse(self.ai.is_winning_move(board, 2))
+
+    def test_is_winning_move_diagonal(self):
+        board = np.array([
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 1, 0, 0, 0, 0],
+            [0, 0, 0, 1, 0, 0, 0],
+            [0, 0, 0, 0, 1, 0, 0],
+            [0, 0, 0, 0, 0, 1, 0]
+        ])
+        self.assertTrue(self.ai.is_winning_move(board, 1))
+        self.assertFalse(self.ai.is_winning_move(board, 2))
+
+    def test_is_winning_move_diagonal_increasing(self):
+        board = np.array([
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 1, 0, 0, 0, 0],
+            [0, 0, 0, 1, 0, 0, 0],
+            [0, 0, 0, 0, 1, 0, 0],
+            [0, 0, 0, 0, 0, 1, 0]
         ])
         self.assertTrue(self.ai.is_winning_move(board, 1))
         self.assertFalse(self.ai.is_winning_move(board, 2))
