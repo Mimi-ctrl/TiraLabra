@@ -16,4 +16,7 @@ Connect Four peli pythonilla. Helsingin yliopiston Tietorakenteet ja algoritmit 
 ### [Viikko 2](https://github.com/Mimi-ctrl/TiraLabra/blob/main/dokumentaatio/viikkoraportit/viikko2.md)
 ### [Viikko 3](https://github.com/Mimi-ctrl/TiraLabra/blob/main/dokumentaatio/viikkoraportit/viikko3.md)
 ### [Viikko 4](https://github.com/Mimi-ctrl/TiraLabra/blob/main/dokumentaatio/viikkoraportit/viikko4.md)
+### [Viikko 5](https://github.com/Mimi-ctrl/TiraLabra/blob/main/dokumentaatio/viikkoraportit/viikko5.md)
+### [Viikko 6](https://github.com/Mimi-ctrl/TiraLabra/blob/main/dokumentaatio/viikkoraportit/viikko6.md)
+
 
