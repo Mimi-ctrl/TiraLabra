@@ -39,13 +39,27 @@ class Ai:
         """Find the best move for the AI to make, considering the current state of the board."""
         best_move = -1
         best_score = -10**9
-        for col in range(7):
+        col = 3
+        minus_plus = 0
+        calc = True
+        for number in range(7):
             temp_board = board.copy()
-            self.make_move(temp_board, col, 2)
-            score = self.minimax(temp_board, 4, -10**9, 10**9, False)
-            if score > best_score:
-                best_score = score
-                best_move = col
+            if calc:
+                self.make_move(temp_board, col - minus_plus, 2)
+                score = self.minimax(temp_board, 4, -10**9, 10**9, False)
+                if score > best_score:
+                    best_score = score
+                    best_move = col - minus_plus
+                calc = False
+            else:
+                self.make_move(temp_board, col + minus_plus, 2)
+                score = self.minimax(temp_board, 4, -10**9, 10**9, False)
+                if score > best_score:
+                    best_score = score
+                    best_move = col + minus_plus
+                calc = True
+            if number % 2 == 0:
+                minus_plus += 1
         return best_move
 
     def make_move(self, board, col, player):

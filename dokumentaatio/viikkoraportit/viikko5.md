@@ -3,11 +3,11 @@
 | Päivämäärä |     Aika      |                                     Mitä tein?                                  |
 |------------|---------------|---------------------------------------------------------------------------------|
 | 18.8.23  |     1.5      |  Lisää testejä Game luokalle. |
-|  20.8.23 | 2  | Lisätty kommenit ai luokkaan ja paranneltu tekoälyä. Aloitettu ai luokan testausta |
+|  20.8.23 | 2  | Lisätty kommentit ai luokkaan ja paranneltu tekoälyä. Aloitettu ai luokan testausta. |
 | Yhteensä   |  3.5     |            Tuntia                          |
 
 ## Mitä uutta?
-Game luokalla lisää testejä. Ai luokassa kommentit ja ai hieman tehokkaampi. 
+Game luokalla lisää testejä. Ai luokassa kommentit ja ai on hieman tehokkaampi. 
 
 ## Mitä opin?
 Ei mitään uutta.

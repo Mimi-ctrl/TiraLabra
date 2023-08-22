@@ -2,11 +2,11 @@
 
 | Päivämäärä |     Aika      |                                     Mitä tein?                                  |
 |------------|---------------|---------------------------------------------------------------------------------|
-| 22.8.23  |   3      | Tein AI:sta tehokkaamman ja lisäsin testejä. |
+| 22.8.23  |   3      | Tein ai:sta tehokkaamman ja lisäsin testejä. |
 | Yhteensä   |       |            Tuntia                          |
 
 ## Mitä uutta?
-AI on nyt tehokkaampi.
+Ai on nyt tehokkaampi.
 
 ## Mitä opin?
 
