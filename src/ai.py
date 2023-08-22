@@ -38,12 +38,11 @@ class Ai:
     def find_best_move(self, board):
         """Find the best move for the AI to make, considering the current state of the board."""
         best_move = -1
-        best_score = float('-inf')
+        best_score = -10**9
         for col in range(7):
             temp_board = board.copy()
             self.make_move(temp_board, col, 2)
-            score = self.minimax(temp_board, 4, float(
-                '-inf'), float('inf'), False)
+            score = self.minimax(temp_board, 4, -10**9, 10**9, False)
             if score > best_score:
                 best_score = score
                 best_move = col
@@ -51,7 +50,7 @@ class Ai:
 
     def make_move(self, board, col, player):
         """Make a move on the game board for the specified player by placing their piece in the chosen column."""
-        for row in range(6):
+        for row in reversed(range(6)):
             if board[row][col] == 0:
                 board[row][col] = player
                 break
@@ -62,7 +61,7 @@ class Ai:
                 or self.is_winning_move(board, 1) or self.is_winning_move(board, 2)):
             return self.evaluate_position(board, 2) - self.evaluate_position(board, 1)
         if ai_turn:
-            max_eval = float('-inf')
+            max_eval = -10**9
             for col in range(7):
                 temp_board = board.copy()
                 self.make_move(temp_board, col, 2)
@@ -73,7 +72,7 @@ class Ai:
                 if beta <= alpha:
                     break
             return max_eval
-        min_eval = float('inf')
+        min_eval = 10**9
         for col in range(7):
             temp_board = board.copy()
             self.make_move(temp_board, col, 1)
@@ -87,20 +86,29 @@ class Ai:
 
     def is_winning_move(self, board, player):
         """Check if the player has a winning move on the current game board."""
-        for row in range(6):
-            for col in range(7 - 3):
-                if all(board[row][col+i] == player for i in range(4)):
-                    return True
-        for col in range(7):
-            for row in range(6 - 3):
-                if all(board[row+i][col] == player for i in range(4)):
-                    return True
-        for row in range(6 - 3):
-            for col in range(7 - 3):
-                if all(board[row+i][col+i] == player for i in range(4)):
-                    return True
-                if all(board[row+3-i][col+i] == player for i in range(4)):
-                    return True
+        for row in board:
+            for column in range(len(row)-3):
+                if row[column] == player:
+                    if row[column] == row[column+1] == row[column+2] == row[column+3]:
+                        return True
+        for row in range(len(board)-3):
+            for column in range(len(board[row])):
+                if board[row][column] == player:
+                    if (board[row][column] == board[row+1][column] ==
+                            board[row+2][column] == board[row+3][column]):
+                        return True
+        for row in range(0, len(board)-3):
+            for column in range(0, len(board[row])-3):
+                if board[row][column] == player:
+                    if (board[row][column] == board[row+1][column+1] ==
+                            board[row+2][column+2] == board[row+3][column+3]):
+                        return True
+        for row in range(len(board)-3):
+            for column in range(3, len(board[row])):
+                if board[row][column] == player:
+                    if (board[row][column] == board[row+1][column-1] ==
+                            board[row+2][column-2] == board[row+3][column-3]):
+                        return True
         return False
 
     def evaluate_position(self, board, player):
