@@ -1,7 +1,7 @@
 # Käyttöohje
 
 ## Ohjelman suorittaminen
-1. Lataa viimeisin release LINKKI TÄHÄN
+1. Lataa viimeisin [release](https://github.com/Mimi-ctrl/TiraLabra/releases).
 2. Asenna riippuvuudet komennolla:
 ```
 poetry install
