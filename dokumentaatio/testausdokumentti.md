@@ -20,7 +20,7 @@ poetry run invoke coverage-report
 ```
 
 ## Yksikkötestauksen kattavuusraportti
-![Kuvakaappaus - 2023-08-22 18-52-15](https://github.com/Mimi-ctrl/TiraLabra/assets/56686737/7cb24064-6b48-4249-bece-a53d3035277e)
+![Kuvakaappaus - 2023-08-29 19-11-13](https://github.com/Mimi-ctrl/TiraLabra/assets/56686737/8808b1ae-3f48-4f16-9b8d-642e326882d0)
 
 ## Mitä testattu
 Game luokan testit varmistavat, että metodit toimivat oikein. Nämä metodit tarkistavat kelvolliset sarakkeet, laskevat pelinappulat, tunnistavat täydet pelilaudat, havaitsevat voittotilanteet (mukaan lukien pystysuora, vaakasuora ja vinottainen), sekä käsittelevät virheelliset syötteet pelisilmukassa. Nämä testit varmistavat yhdessä pelilogiikan ja siihen liittyvien metodien tarkkuuden ja luotettavuuden.
