@@ -9,11 +9,5 @@
 ## Mitä uutta?
 Game luokalla lisää testejä. Ai luokassa kommentit ja ai on hieman tehokkaampi. 
 
-## Mitä opin?
-Ei mitään uutta.
-
-## Epäselvyyksiä?
-Ei ole.
-
 ## Mitä seuraavaksi?
 Koitan tehdä tekoälystä paremman. Lisään testejä ja viimeistelen dokumentaatiot. En enään lähde tekemään peliä pygamella vaan yritän parannella nykyistä ohjelmaa.

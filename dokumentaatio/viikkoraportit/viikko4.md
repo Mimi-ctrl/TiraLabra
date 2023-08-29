@@ -10,9 +10,6 @@
 ## Mitä uutta?
 Peli loppuu kun lauta on täynnä. Menut ovat omassa luokassaan.
 
-## Mitä opin?
-Ei mitään uutta.
-
 ## Epäselvyyksiä?
 Olen vähän jumissa ai:n kanssa, tuntuu että se tarkistaa vain tällä hetkellä parhaimmat mahdolliset siirrot niihin sarakkeisiin jossa ei ole vielä mitään. Muutenkin olisi kiva kuulla onko jotain paranneltavaa.
 

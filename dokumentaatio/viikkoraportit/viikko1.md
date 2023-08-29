@@ -13,8 +13,5 @@ Sain suunniteltua kuinka toteutan pelin sekä alustettua projektin jotta pääse
 ## Mitä opin?
 Minimax on jo ennestään tuttu aihe tietorakenteet ja algoritmit -kurssilta, mutta syventymällä aiheeseen lisää sain entistä paremman käsityksen siitä.
 
-## Epäselvyyksiä?
-Ei ole.
-
 ## Mitä seuraavaksi?
 Seuraavaksi aloitan tekemään peliä ja siihen testejä. Teen pelin ensin toimimaan tekstigrafiikka käyttöliittymällä.

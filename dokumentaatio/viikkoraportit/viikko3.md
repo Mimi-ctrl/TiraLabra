@@ -13,11 +13,5 @@
 ## Mitä uutta?
 Ohjelma tomii nyt kaksin pelattavana ja testaa luokkaa Game. Koodi on selkeämpää. Aloitin ai:n tekemisen, mutta en saanut sitä vielä toimimaan. Ai:ta pitää siis vielä korjailla.
 
-## Mitä opin?
-Ei mitään uutta.
-
-## Epäselvyyksiä?
-Ei ole.
-
 ## Mitä seuraavaksi?
 Jatkan Ai:n tekemistä/korjaamista, lisään testejä sekä dokumentaatiota, parannan kommentteja sekä lisään testin joka lopettaa pelin kun lauta on täynnä(tasapeli).
